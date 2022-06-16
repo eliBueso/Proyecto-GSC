@@ -12,8 +12,8 @@ using Proyecto_GSC.Data;
 namespace Proyecto_GSC.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20220615174726_AgregarMedicoDB")]
-    partial class AgregarMedicoDB
+    [Migration("20220615234938_HospitalDB")]
+    partial class HospitalDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,7 +52,7 @@ namespace Proyecto_GSC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cita");
+                    b.ToTable("Citas");
                 });
 
             modelBuilder.Entity("Proyecto_GSC.Models.Medico", b =>
@@ -85,7 +85,7 @@ namespace Proyecto_GSC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medico");
+                    b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("Proyecto_GSC.Models.Paciente", b =>

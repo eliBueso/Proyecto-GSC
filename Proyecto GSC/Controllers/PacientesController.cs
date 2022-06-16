@@ -93,7 +93,7 @@ namespace Proyecto_GSC.Controllers
             {
                 PacienteDto model = await _pacienteRepositorio.CreateUpdate(pacienteDto);
                 _response.Result = model;
-                return CreatedAtAction("GetCliente", new { id = model.Id }, _response);
+                return CreatedAtAction("GetPaciente", new { id = model.Id }, _response);
             }
             catch (Exception ex)
             {

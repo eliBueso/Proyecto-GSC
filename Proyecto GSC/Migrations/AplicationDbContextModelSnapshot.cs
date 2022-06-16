@@ -50,7 +50,7 @@ namespace Proyecto_GSC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cita");
+                    b.ToTable("Citas");
                 });
 
             modelBuilder.Entity("Proyecto_GSC.Models.Medico", b =>
@@ -83,7 +83,7 @@ namespace Proyecto_GSC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medico");
+                    b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("Proyecto_GSC.Models.Paciente", b =>
