@@ -15,7 +15,7 @@ namespace Proyecto_GSC.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+   // [Authorize]
     public class PacientesController : ControllerBase
     {
         private readonly InterfazPacienteRepositorio _pacienteRepositorio;
@@ -93,7 +93,7 @@ namespace Proyecto_GSC.Controllers
             {
                 PacienteDto model = await _pacienteRepositorio.CreateUpdate(pacienteDto);
                 _response.Result = model;
-                return CreatedAtAction("GetCliente", new { id = model.Id }, _response);
+                return CreatedAtAction("GetPaciente", new { id = model.Id }, _response);
             }
             catch (Exception ex)
             {
