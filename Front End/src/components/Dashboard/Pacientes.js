@@ -6,12 +6,8 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title.js';
+import ModalPaciente from './ModalPaciente';
 
-
-
-function preventDefault(event) {
-  event.preventDefault();
-}
 
 
 export default function Orders(props) {
@@ -43,8 +39,8 @@ export default function Orders(props) {
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        Agregar Paciente
+      <Link color="primary" href="#" sx={{ mt: 3 }}>
+        <ModalPaciente/>
       </Link>
     </React.Fragment>
   );
