@@ -40,7 +40,7 @@ export default function SignIn() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = { nombreDeUsuario: user, contraseña: password  }
-    axios.post('https://localhost:44324/api/Usuarios/Login', data).then( res => {
+    axios.post('https://localhost:7074/api/Usuarios/Login', data).then( res => {
         const userInfo = res.data.result;
         dispatch(authActions.login({username: userInfo.nombreDeUsuario, token: userInfo.token}));
         navigate("/Admin", { replace: true });

@@ -12,7 +12,7 @@ using Proyecto_GSC.Data;
 namespace Proyecto_GSC.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    [Migration("20220615234938_HospitalDB")]
+    [Migration("20220616082558_HospitalDB")]
     partial class HospitalDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,19 +32,16 @@ namespace Proyecto_GSC.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Apellidos")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("FechaDeCita")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("FechaDeNacimiento")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("HoraDeCita")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Medico")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombres")
                         .IsRequired()

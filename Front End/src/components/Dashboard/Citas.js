@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title.js';
-
+import CrearCita from './CrearCita';
 
 
 function preventDefault(event) {
@@ -26,10 +26,9 @@ export default function Orders(props) {
           <TableRow>
             <TableCell>id</TableCell>
             <TableCell>Fecha</TableCell>
+            <TableCell>Hora</TableCell>
             <TableCell>Nombre</TableCell>
-            <TableCell>Apellido</TableCell>
-            <TableCell>Direccion</TableCell>
-            <TableCell>Fecha de Nacimiento</TableCell>
+            <TableCell>Medico</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -37,17 +36,14 @@ export default function Orders(props) {
             <TableRow key={row.id}>
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.fechaDeCita}</TableCell>
+              <TableCell>{row.horaDeCita}</TableCell>
               <TableCell>{row.nombres}</TableCell>
-              <TableCell>{row.apellidos}</TableCell>
-              <TableCell>{row.direccion}</TableCell>
-              <TableCell>{row.fechaDeNacimiento}</TableCell>
+              <TableCell>{row.medico}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        Agregar Cita
-      </Link>
+      <CrearCita/>
     </React.Fragment>
   );
 }

@@ -16,10 +16,9 @@ namespace Proyecto_GSC.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FechaDeCita = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    HoraDeCita = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nombres = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Apellidos = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FechaDeNacimiento = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Medico = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

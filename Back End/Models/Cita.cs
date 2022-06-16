@@ -16,12 +16,7 @@ namespace Proyecto_GSC.Models
 
         [Required]
         public string Nombres { get; set; } = string.Empty;
-
-        [Required]
-        public string Apellidos { get; set; } = string.Empty;
-
-        [Required] 
-        public string Direccion { get; set;} = string.Empty;   
+ 
         [Required]
         public string Medico { get; set; }
     }

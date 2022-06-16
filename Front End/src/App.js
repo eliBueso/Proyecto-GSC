@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 // import {useSelector} from 'react-redux';
 
 function App() {
-  // const isAuth = useSelector(state => state.isAuth);
+  // const isAuth = useSelector(state => state.auth.isAuth);
   return (
     <Routes>
       <Route path="/Login" element={<Login/>}/> 

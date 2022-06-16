@@ -6,7 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title.js';
-import ModalPaciente from './ModalPaciente';
+import CrearPaciente from './CrearPaciente';
 
 
 
@@ -40,7 +40,7 @@ export default function Orders(props) {
         </TableBody>
       </Table>
       <Link color="primary" href="#" sx={{ mt: 3 }}>
-        <ModalPaciente/>
+        <CrearPaciente />
       </Link>
     </React.Fragment>
   );

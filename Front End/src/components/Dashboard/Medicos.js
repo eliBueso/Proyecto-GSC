@@ -6,6 +6,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Title from './Title.js';
+import CrearMedico from './CrearMedico';
 
 
 
@@ -45,8 +46,8 @@ export default function Orders(props) {
           ))}
         </TableBody>
       </Table>
-      <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        Agregar Medico
+      <Link color="primary" sx={{ mt: 3 }}>
+        <CrearMedico/>
       </Link>
     </React.Fragment>
   );
