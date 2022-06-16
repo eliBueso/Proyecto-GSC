@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proyecto_GSC.Data;
 
@@ -11,9 +12,10 @@ using Proyecto_GSC.Data;
 namespace Proyecto_GSC.Migrations
 {
     [DbContext(typeof(AplicationDbContext))]
-    partial class AplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220615234938_HospitalDB")]
+    partial class HospitalDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,7 +52,7 @@ namespace Proyecto_GSC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cita");
+                    b.ToTable("Citas");
                 });
 
             modelBuilder.Entity("Proyecto_GSC.Models.Medico", b =>
@@ -83,7 +85,7 @@ namespace Proyecto_GSC.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Medico");
+                    b.ToTable("Medicos");
                 });
 
             modelBuilder.Entity("Proyecto_GSC.Models.Paciente", b =>

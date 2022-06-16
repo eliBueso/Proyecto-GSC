@@ -15,7 +15,7 @@ namespace Proyecto_GSC.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
- //   [Authorize]
+    [Authorize]
     public class CitasController : ControllerBase
     {
         private readonly InterfazCitaRepositorio _citaRepositorio;
