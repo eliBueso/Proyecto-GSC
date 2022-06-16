@@ -12,6 +12,9 @@ namespace Proyecto_GSC.Models
         public DateTime FechaDeCita { get; set; } 
 
         [Required]
+        public string HoraDeCita { get; set; } = string.Empty;
+
+        [Required]
         public string Nombres { get; set; } = string.Empty;
 
         [Required]
@@ -20,6 +23,6 @@ namespace Proyecto_GSC.Models
         [Required] 
         public string Direccion { get; set;} = string.Empty;   
         [Required]
-        public DateTime FechaDeNacimiento { get; set; }
+        public string Medico { get; set; }
     }
 }
