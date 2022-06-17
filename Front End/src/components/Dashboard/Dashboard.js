@@ -95,6 +95,7 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const token = useSelector(state => state.auth.token);
+  const user = useSelector(state => state.auth.username);
   const count = useSelector(state => state.count.count);
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -204,6 +205,7 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
+            {user}
             <IconButton onClick={handleLogout} color="inherit">
                 <LogoutIcon />
             </IconButton>

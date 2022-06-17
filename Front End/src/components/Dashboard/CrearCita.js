@@ -19,6 +19,9 @@ import InputLabel from '@mui/material/InputLabel';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { countActions } from '../../store/count';
+import { set } from 'date-fns/esm';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 const style = {
   position: 'absolute',
@@ -37,12 +40,23 @@ export default function CrearPaciente(props) {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setDisable(false);
+    setDate(new Date());
+    setMedico('');
+    setNombre('')
+    setSuccess(false);
+    setError(false);
+    setTime('');
+  };
   const [date, setDate] = useState(new Date())
   const [time, setTime] = useState('');
-  const [nombre, setNombre] = useState([]);
-  const [medico, setMedico]  = useState([]);
-  
+  const [nombre, setNombre] = useState('');
+  const [medico, setMedico]  = useState('');
+  const [Success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const handleChangeTime = (event) => {
     setTime(event.target.value);
@@ -64,11 +78,15 @@ export default function CrearPaciente(props) {
     }
     axios.post('https://localhost:7074/api/citas',data,config).then(res =>{
       dispatch(countActions.count())
+      setSuccess(true);
+      setDisable(true);
     }).catch( err => {
       console.log(err);
+      setError(true);
     })
   }
 
+ console.log(disable);
 
   return (
     <div>
@@ -131,19 +149,27 @@ export default function CrearPaciente(props) {
           </FormControl>
         </Box>
 
-            <SelectPaciente/>
-            <SelectMedico />
+            <SelectPaciente pers={nombre} Setpersona={e=>{setNombre(e.target.value)}}/>
+            <SelectMedico med={medico} Setmed={e=>{setMedico(e.target.value)}}/>
             
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Crear Cita
-            </Button>
+            { !disable ? <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Crear Cita
+              </Button> : null }
           </Box>
         </Box>
+        { Success ? <Alert severity="success">
+        <AlertTitle>Success</AlertTitle>
+        Accion Realizada correctamente — <strong>Se actualizo</strong>
+      </Alert> : null}
+      {error ? <Alert severity="error"><AlertTitle>Error</AlertTitle>
+          Error al realizar accion — <strong>No se guardo</strong>
+        </Alert> : null}
+
       </Container>
         </Box>
       </Modal>

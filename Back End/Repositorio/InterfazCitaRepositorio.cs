@@ -10,6 +10,6 @@ namespace Proyecto_GSC.Repositorio
 
         Task<CitaDto> CreateUpdate(CitaDto citaDto);
 
-        Task<bool>? DeleteCita(int id);
+        Task<bool> DeleteCita(int id);
     }
 }

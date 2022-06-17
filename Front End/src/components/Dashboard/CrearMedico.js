@@ -9,7 +9,8 @@ import CssBaseline  from '@mui/material/CssBaseline';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { countActions } from '../../store/count';
-
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
 
 
 const style = {
@@ -28,13 +29,26 @@ export default function CrearPaciente(props) {
   const token = useSelector(state => state.auth.token);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false)
+    setNombres('');
+    setApellidos('');
+    setDireccion('');
+    setTelefono('');
+    setEspecialidad('');
+    setError(false);
+    setSuccess(false);
+    setDisable(false);
+  };
   const [nombres, setNombres ] = useState('');
   const [apellidos, setApellidos ] = useState('');
   const [direccion, setDireccion ] = useState('');
   const [telefono, setTelefono ] = useState('');
   const [especialidad, setEspecialidad] = React.useState('');
   const dispatch = useDispatch();
+  const [Success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const handleSubmit = e => {
      e.preventDefault();
@@ -50,8 +64,11 @@ export default function CrearPaciente(props) {
     }
     axios.post('https://localhost:7074/api/medicos',data,config).then(res =>{
       dispatch(countActions.count())
+      setSuccess(true);
+      setDisable(true);
     }).catch( err => {
       console.log(err);
+      setError(true);
     })
   }
 
@@ -131,16 +148,23 @@ export default function CrearPaciente(props) {
               value={especialidad}
               onChange={ e => setEspecialidad(e.target.value)}
             />
-            <Button
+            { !disable ? <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Crear Medico
-            </Button>
+            </Button> : null }
           </Box>
         </Box>
+        { Success ? <Alert severity="success">
+        <AlertTitle>Success</AlertTitle>
+        Accion Realizada correctamente — <strong>Se actualizo</strong>
+      </Alert> : null}
+      {error ? <Alert severity="error"><AlertTitle>Error</AlertTitle>
+          Error al realizar accion — <strong>No se guardo</strong>
+        </Alert> : null}
       </Container>
         </Box>
       </Modal>

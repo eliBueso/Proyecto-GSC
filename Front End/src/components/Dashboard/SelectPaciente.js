@@ -21,16 +21,16 @@ const MenuProps = {
 
 
 
-function getStyles(name, personName, theme) {
+function getStyles(name, pers, theme) {
   return {
     fontWeight:
-      personName.indexOf(name) === -1
+    pers.indexOf(name) === -1
         ? theme.typography.fontWeightRegular
         : theme.typography.fontWeightMedium,
   };
 }
 
-export default function MultipleSelect({handleNombre}) {
+export default function MultipleSelect({Setpersona, pers}) {
     const token = useSelector(state => state.auth.token);
   const theme = useTheme();
   const [personName, setPersonName] = useState([]);
@@ -47,16 +47,6 @@ export default function MultipleSelect({handleNombre}) {
       console.log(error);
     })
 
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
-  };
-
   return (
     <div>
       <FormControl sx={{ mt:2 , m: 1, width: 350 }}>
@@ -64,9 +54,8 @@ export default function MultipleSelect({handleNombre}) {
         <Select
           labelId="demo-multiple-name-label"
           id="demo-multiple-name"
-          multiple
-          value={personName}
-          onChange={handleChange}
+          value={pers}
+          onChange={Setpersona}
           input={<OutlinedInput label="Name" />}
           MenuProps={MenuProps}
         > 
@@ -74,7 +63,7 @@ export default function MultipleSelect({handleNombre}) {
             <MenuItem
               key={name.id}
               value={name.nombres}
-              style={getStyles(name.nombres, personName, theme)}
+              style={getStyles(name.nombres, pers, theme)}
             >
               {name.nombres}
             </MenuItem>
